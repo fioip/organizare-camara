@@ -9,6 +9,6 @@
 
 ## TO DO:
 
-[] Create node.api
-[] Create product list & pop-up
-[] Button add/remove - functions
+- [] Create node.api
+- [] Create product list & pop-up
+- [] Button add/remove - functions
