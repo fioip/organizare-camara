@@ -14,10 +14,14 @@
 - [x] Initialize project to use prettier
 - [x] Initialize project to use NPM
 - [x] Initialize project to use webpack
+- [x] Create category list html
+- [x] Create product pop-up html
+- [x] Open/close pop-up
 - [ ] Create node.api
-- [ ] Create product list page
-- [ ] Create pop-up html
-- [ ] Button add/remove - functions
+- [ ] Save data from pop up
+- [ ] Populate table with products
+- [ ] Add functionality on table
+- [ ] Create edit product pop-up
 
 ## Project info
 
