@@ -1,0 +1,42 @@
+body {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+p {
+  font-size: 16px;
+}
+
+button {
+  padding: 12px 20px;
+  border-radius: 6px;
+  background-color: #94d3d7;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #77aaad;
+  cursor: pointer;
+}
+
+.page-title-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
