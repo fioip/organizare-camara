@@ -19,11 +19,22 @@ function addProduct() {
    
      <div>
          <label>Unitate de masura:</label>
-         <input />
+         <div class="select">
+            <select name="unitate" id="unitate">
+               <option selected disabled>Unitate</option>
+               <option value="mg">mg</option>
+               <option value="g">g</option>
+               <option value="ml">ml</option>
+               <option value="l">l</option>
+            </select>
+          </div>
      </div>
+
      <div>
          <label>Bucati:</label>
-         <input />
+         <button>-</button>
+         <input value="0" id="totalClicks" />
+         <button>+</button>
      </div>
      `;
   return form;
