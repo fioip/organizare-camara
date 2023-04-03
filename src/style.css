@@ -45,6 +45,8 @@ button:hover {
   justify-content: space-between;
 }
 
+/* Modal */
+
 .modal.open .modal-overlay {
   background-color: #000000c9;
   position: fixed;
@@ -56,6 +58,7 @@ button:hover {
 
 .modal-container {
   position: absolute;
+  flex-direction: column;
   width: 600px;
   height: 600px;
   transition: all 0.3s ease;
@@ -63,7 +66,7 @@ button:hover {
   margin-right: auto;
   left: 0;
   right: 0;
-  padding: 10px 20px;
+  padding: 10px 20px 20px;
   border: 1px solid rgb(209, 209, 209);
   border-radius: 10px;
   background-color: #ffffff;
@@ -72,13 +75,18 @@ button:hover {
 }
 
 .modal.open .modal-container {
-  display: block;
+  display: flex;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
+}
+
+.modal-body {
+  flex-grow: 1;
 }
 
 .button-close {
@@ -93,4 +101,62 @@ button:hover {
 .button-close img {
   height: 20px;
   display: inline-block;
+}
+
+.modal-footer button {
+  float: right;
+}
+
+/* Form*/
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.form-control {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+label {
+  width: 150px;
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+input,
+select {
+  flex-grow: 1;
+  border-radius: 4px;
+  padding: 10px 8px;
+  border: 1px solid #dfdfdf;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #dfdfdf;
+  padding: 12px 20px;
+  margin: 80px auto 0;
+  max-width: 450px;
+}
+
+.quantity label {
+  width: 130px;
+}
+
+.quantity input {
+  margin-right: 10px;
+}
+
+.quantity button {
+  padding: 4px 8px;
+  margin-left: 10px;
+  border: 1px solid #dfdfdf;
+  background-color: transparent;
 }
