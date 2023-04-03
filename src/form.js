@@ -4,12 +4,12 @@ function addProduct() {
   form.innerHTML = `
   <div class="modal-body">
   <div class="form-control">
-      <label>Denumire:</label>
+      <label>Denumire</label>
     <input />
   </div>
 
   <div class="form-control">
-      <label>Categorie:</label>
+      <label>Categorie</label>
       <select id="selectCategory">
         <option value="" selected disabled hidden>Alege categorie</option>
         <option>Fainoase</option>
@@ -18,20 +18,26 @@ function addProduct() {
   </div>
 
   <div class="form-control">
-      <label>Alergeni:</label>
+      <label>Alergeni</label>
       <input />
   </div>
 
   <div class="form-control">
-      <label>Unitate de masura:</label>
-      <input />
+      <label>Unitate de masura</label>
+      <select id="selectCategory">
+        <option value="" selected disabled hidden>Alege unitate</option>
+        <option>mg</option>
+        <option>g</option>
+        <option>ml</option>
+        <option>l</option>
+      </select>
   </div>
 
   <div class="quantity">
     <label>Cantitate</label>
     <input value ="0" id="quantity" />
-    <button id="increase-value" onClick="increaseInputValue()" type="button">+</button>
-    <button id="decrase-value" onClick="decreaseInputValue()" type="button">-</button>
+    <button id="plus" onClick="incrementInputValue()" type="button">+</button>
+    <button id="minus" onClick="decrementInputValue()" type="button">-</button>
   </div>
 </div>
 <div class="modal-footer">
@@ -40,32 +46,5 @@ function addProduct() {
      `;
   return form;
 }
-
-function increaseInputValue(e) {
-  //e.preventDefault();
-  let increaseValueButton = document.getElementById("increase-value");
-  let input = document.getElementById("quantity");
-  increaseValueButton.addEventListener("click", () => {
-    let inputValue = input.value;
-    const newValue = parseInt(inputValue) + 1;
-    //inputValue = newValue;
-    inputValue = newValue;
-    console.warn("click", inputValue, newValue);
-  });
-}
-
-function decreaseInputValue(e) {
-  let decreaseValueButton = document.getElementById("decrase-value");
-  let input = document.getElementById("quantity");
-  decreaseValueButton.addEventListener("click", () => {
-    let inputValue = input.value;
-    const newValue = parseInt(inputValue) - 1;
-    input.value = newValue;
-    console.warn("click", inputValue, newValue);
-  });
-}
-
-const select = document.getElementById("selectCategory");
-var arr = ["Fainoase", "Conserve", "Dulciuri", "Borcane", "Condimente"];
 
 addProduct();
