@@ -13,7 +13,10 @@ function addProduct() {
       <select id="selectCategory">
         <option value="" selected disabled hidden>Alege categorie</option>
         <option>Fainoase</option>
+        <option>Conserve</option>
         <option>Dulciuri</option>
+        <option>Borcane</option>
+        <option>Condimente</option>
       </select>
   </div>
 
@@ -35,9 +38,9 @@ function addProduct() {
 
   <div class="quantity">
     <label>Cantitate</label>
-    <input value ="0" id="quantity" />
-    <button id="plus" onClick="incrementInputValue()" type="button">+</button>
-    <button id="minus" onClick="decrementInputValue()" type="button">-</button>
+    <button onclick="totalClick(-1)">-</button>
+    <span id="totalClicks">0</span>
+    <button onclick="totalClick(1)">+</button>
   </div>
 </div>
 <div class="modal-footer">
