@@ -8,10 +8,12 @@ body {
   max-width: 1400px;
   margin: 40px auto;
   padding: 0 24px;
+  background: #f9f8f7;
 }
 
 h1 {
   font-size: 40px;
+  color: #232a2f;
 }
 
 p {
@@ -25,15 +27,17 @@ body {
 button {
   padding: 12px 20px;
   border-radius: 6px;
-  background-color: #94d3d7;
+  background-color: #153147;
   border: none;
   font-size: 16px;
   font-weight: 600;
+  color: #ffff;
 }
 
 button:hover {
-  background-color: #77aaad;
+  background-color: #adb8bb;
   cursor: pointer;
+  color: #153147;
 }
 
 .page-title-section {
@@ -65,9 +69,9 @@ button:hover {
   left: 0;
   right: 0;
   padding: 10px 20px 20px;
-  border: 1px solid rgb(209, 209, 209);
+  border: 1px solid #232a2f;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: #edeae4;
   display: none;
   z-index: 9;
 }
@@ -131,32 +135,34 @@ select {
   flex-grow: 1;
   border-radius: 4px;
   padding: 10px 8px;
-  border: 1px solid #dfdfdf;
+  border: 1px solid #232a2f;
+  background: #f9f8f7;
 }
 
 .quantity {
   display: flex;
   align-items: center;
   border-radius: 6px;
-  border: 1px solid #dfdfdf;
+  border: 1px solid #232a2f;
   padding: 12px 20px;
   margin: 80px auto 0;
   max-width: 450px;
 }
 
-.quantity label {
-  width: 130px;
-}
-
 .quantity input {
-  margin-right: 10px;
+  margin: 0px 20px;
 }
 
 .quantity button {
   padding: 4px 8px;
   margin-left: 10px;
-  border: 1px solid #dfdfdf;
   background-color: transparent;
+  background-color: #153147;
+  border: none;
+}
+
+.quantity button:hover {
+  background-color: #adb8bb;
 }
 
 /* Produse */
@@ -165,10 +171,10 @@ select {
   display: flex;
   width: 50%;
   height: 30%;
-  /* border: 2px solid #77aaad; */
   border-radius: 20px;
   position: relative;
   margin-top: 15px;
+  color: #232a2f;
 }
 
 .card:hover {
@@ -180,4 +186,9 @@ select {
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
 }

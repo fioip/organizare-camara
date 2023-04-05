@@ -5,12 +5,12 @@ function addProduct() {
   <div class="modal-body">
   <div class="form-control">
       <label>Denumire</label>
-    <input />
+    <input required/>
   </div>
 
   <div class="form-control">
       <label>Categorie</label>
-      <select id="selectCategory">
+      <select id="selectCategory" required>
         <option value="" selected disabled hidden>Alege categorie</option>
         <option>Fainoase</option>
         <option>Conserve</option>
@@ -22,12 +22,12 @@ function addProduct() {
 
   <div class="form-control">
       <label>Alergeni</label>
-      <input />
+      <input required/>
   </div>
 
   <div class="form-control">
       <label>Unitate de masura</label>
-      <select id="selectCategory">
+      <select id="selectCategory" required>
         <option value="" selected disabled hidden>Alege unitate</option>
         <option>mg</option>
         <option>g</option>
@@ -36,12 +36,15 @@ function addProduct() {
       </select>
   </div>
 
-  <div class="quantity">
-    <label>Cantitate</label>
-    <button onclick="totalClick(-1)">-</button>
-    <span id="totalClicks">0</span>
-    <button onclick="totalClick(1)">+</button>
+  <div class="form-control">
+      <div class="quantity">
+          <label required>Cantitate</label>
+          <button onclick="totalClick(-1)">-</button>
+          <input id="totalClicks" value="0" />
+        <button onclick="totalClick(1)">+</button>
+      </div>
   </div>
+
 </div>
 <div class="modal-footer">
   <button>Save</>
