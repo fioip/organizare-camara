@@ -54,7 +54,7 @@ export function addProduct() {
   return form;
 }
 
-export function addEventOnQuantityButtons() {
+function addEventOnQuantityButtons() {
   console.warn("click");
   let increaseValueButton = document.getElementById("increase-value");
   increaseValueButton.addEventListener("click", increaseInputValue);
