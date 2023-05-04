@@ -73,7 +73,11 @@ function increaseInputValue() {
 function decreaseInputValue() {
   let input = document.getElementById("quantity");
   let inputValue = input.value;
-  const newValue = parseInt(inputValue) - 1;
+  let newValue;
+
+  if (inputValue > 0) newValue = parseInt(inputValue) - 1;
+  else newValue = 0;
+
   input.value = newValue;
   console.warn("click", inputValue, newValue);
 }
