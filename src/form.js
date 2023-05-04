@@ -1,4 +1,4 @@
-export function addProduct() {
+export function addProductModalHTML() {
   const form = document.querySelector("form");
 
   form.innerHTML = `
@@ -40,7 +40,7 @@ export function addProduct() {
         <div class="quantity">
             <label>Cantitate</label>
             <button type="button" id="decrase-value">-</button>
-            <input id="quantity" value="0" />
+            <input id="quantity" value="0" type="number" min="0"/>
           <button type="button" id="increase-value">+</button>
         </div>
     </div>
@@ -55,7 +55,6 @@ export function addProduct() {
 }
 
 function addEventOnQuantityButtons() {
-  console.warn("click");
   let increaseValueButton = document.getElementById("increase-value");
   increaseValueButton.addEventListener("click", increaseInputValue);
   let decreaseValueButton = document.getElementById("decrase-value");
