@@ -11,20 +11,15 @@ function loadProductsRequest() {
   }).then((r) => r.json());
 }
 
-// function createProductRequest(product) {
-//   return (
-//     fetch("http://localhost:3000/products-json/create", {
-//       //se va efectua doar cand dau click pe submit
-//       method: "POST", //cum transmit date
-//       headers: {
-//         "Content-Type": "application/json", //in ce format transmit date
-//       },
-//       body: JSON.stringify(product),
-//     })
-//       //1. Facem requestul => 2. Convertim la json => 3. Asteptam raspunsul care este un status
-//       .then((r) => r.json())
-//   );
-// }
+function createProductRequest(product) {
+  return fetch("http://localhost:3000/products-json/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(product),
+  }).then((r) => r.json());
+}
 
 function getProductsHtml(products) {
   return products
@@ -54,11 +49,6 @@ function displayProducts(products) {
     getProductsHtml(products);
 }
 
-// function initEvents() {
-//   const form = document.getElementById("pantryForm");
-//   form.addEventListener("submit", onSubmit);
-// }
-
 function loadProducts() {
   loadProductsRequest().then((products) => {
     allProducts = products;
@@ -67,8 +57,36 @@ function loadProducts() {
   });
 }
 
+function readProduct() {
+  return {
+    name: document.getElementById("name").value,
+    category: document.getElementById("selectCategory").value,
+    allergens: document.getElementById("allergens").value,
+    measureUnit: document.getElementById("selectUnit").value,
+    quantity: document.getElementById("quantity").value,
+  };
+}
+
+function onSubmit(e) {
+  e.preventDefault();
+  const product = readProduct();
+  createProductRequest(product).then((status) => {
+    if (status.success) {
+      product.id = status.id;
+      allProducts = [...allProducts, product];
+      displayProducts(allProducts);
+      e.target.reset();
+    }
+  });
+}
+
+function initEvents() {
+  const form = document.getElementById("pantryForm");
+  form.addEventListener("submit", onSubmit);
+}
+
 loadProducts();
-//initEvents();
+initEvents();
 
 function openModal() {
   const triggers = document.querySelectorAll("[data-modal]");

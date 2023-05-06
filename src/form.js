@@ -3,53 +3,51 @@ export function addProductModalHTML() {
 
   form.innerHTML = `
   <div class="modal-body">
-    <form id="pantryForm">
-      <div class="form-control">
-          <label>Denumire</label>
-        <input />
-      </div>
-
-      <div class="form-control">
-          <label>Categorie</label>
-          <select id="selectCategory">
-            <option value="" selected disabled hidden>Alege categorie</option>
-            <option>Fainoase</option>
-            <option>Conserve</option>
-            <option>Dulciuri</option>
-            <option>Borcane</option>
-            <option>Condimente</option>
-          </select>
-      </div>
-
-      <div class="form-control">
-          <label>Alergeni</label>
-          <input />
-      </div>
-
-      <div class="form-control">
-          <label>Unitate de masura</label>
-          <select id="selectCategory">
-            <option value="" selected disabled hidden>Alege unitate</option>
-            <option>mg</option>
-            <option>g</option>
-            <option>ml</option>
-            <option>l</option>
-          </select>
-      </div>
-
-      <div class="form-control">
-          <div class="quantity">
-              <label>Cantitate</label>
-              <button type="button" id="decrase-value">-</button>
-              <input id="quantity" value="0" type="number" min="0"/>
-            <button type="button" id="increase-value">+</button>
-          </div>
-      </div>
+    <div class="form-control">
+        <label>Denumire</label>
+      <input placeholder="Adaugati denumire produs" type="text" name="name" id="name" />
     </div>
-    <div class="modal-footer">
-      <button>Save</>
+
+    <div class="form-control">
+        <label>Categorie</label>
+        <select id="selectCategory">
+          <option value="" selected disabled hidden>Alege categorie</option>
+          <option>Fainoase</option>
+          <option>Conserve</option>
+          <option>Dulciuri</option>
+          <option>Borcane</option>
+          <option>Condimente</option>
+        </select>
     </div>
-  </form>
+
+    <div class="form-control">
+        <label>Alergeni</label>
+        <input placeholder="Adaugati alergenii" type="text" name="allergens" id="allergens" />
+    </div>
+
+    <div class="form-control">
+        <label>Unitate de masura</label>
+        <select id="selectUnit">
+          <option value="" selected disabled hidden>Alege unitate</option>
+          <option>mg</option>
+          <option>g</option>
+          <option>ml</option>
+          <option>l</option>
+        </select>
+    </div>
+
+    <div class="form-control">
+        <div class="quantity">
+            <label>Cantitate</label>
+            <button type="button" id="decrase-value">-</button>
+            <input id="quantity" value="0" type="number" min="0"/>
+          <button type="button" id="increase-value">+</button>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit">Save</>
+  </div>
 `;
 
   addEventOnQuantityButtons();
