@@ -43,17 +43,33 @@ function getProductsHtml(products) {
 
 let oldDisplayproducts;
 
-function displayProducts(products) {
+function displayProducts(products, tableSelector) {
   oldDisplayproducts = products;
-  document.querySelector("#productsTable tbody").innerHTML =
-    getProductsHtml(products);
+  document.querySelector(tableSelector).innerHTML = getProductsHtml(products);
+}
+
+function getFilteredProducts(products, category) {
+  const filteredProducts = products.filter((product) => {
+    return product.category === category;
+  });
+  return filteredProducts;
 }
 
 function loadProducts() {
   loadProductsRequest().then((products) => {
+    const fainoaseArray = getFilteredProducts(products, "Fainoase");
+    const conserveArray = getFilteredProducts(products, "Conserve");
+    const dulciuriArray = getFilteredProducts(products, "Dulciuri");
+    const borcaneArray = getFilteredProducts(products, "Borcane");
+    const condimenteArray = getFilteredProducts(products, "Condimente");
+
     allProducts = products;
     console.warn("aici", products);
-    displayProducts(products);
+    displayProducts(fainoaseArray, "#fainoaseTable tbody");
+    displayProducts(conserveArray, "#conserveTable tbody");
+    displayProducts(dulciuriArray, "#dulciuriTable tbody");
+    displayProducts(borcaneArray, "#borcaneTable tbody");
+    displayProducts(condimenteArray, "#condimenteTable tbody");
   });
 }
 
@@ -85,9 +101,6 @@ function initEvents() {
   form.addEventListener("submit", onSubmit);
 }
 
-loadProducts();
-initEvents();
-
 function openModal() {
   const triggers = document.querySelectorAll("[data-modal]");
   triggers.forEach((trigger) => {
@@ -108,6 +121,40 @@ function closeModal() {
   });
 }
 
+function createProductTable(tableId) {
+  const tableNode = document.createElement("table");
+  tableNode.id = tableId;
+  tableNode.innerHTML = `
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Allergens</th>
+    <th>Measure Unit</th>
+    <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody></tbody>`;
+  return tableNode;
+}
+
+function initTable(cardName, tableName) {
+  const productCardElement = document.getElementById(cardName);
+  const productTableNode = createProductTable(tableName);
+  productCardElement.appendChild(productTableNode);
+}
+
+function initTables() {
+  initTable("card-fainoase", "fainoaseTable");
+  initTable("card-conserve", "conserveTable");
+  initTable("card-dulciuri", "dulciuriTable");
+  initTable("card-borcane", "borcaneTable");
+  initTable("card-condimente", "condimenteTable");
+}
+
+initTables();
+loadProducts();
+initEvents();
 openModal();
 closeModal();
 addProductModalHTML();
