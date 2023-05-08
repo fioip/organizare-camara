@@ -26,6 +26,11 @@ export function addProductModalHTML() {
     </div>
 
     <div class="form-control">
+    <label>Gramaj</label>
+    <input placeholder="Adaugati gramajul" type="text" name="weight" id="weight" />
+    </div>
+
+    <div class="form-control">
         <label>Unitate de masura</label>
         <select id="selectUnit">
           <option value="" selected disabled hidden>Alege unitate</option>

@@ -25,11 +25,12 @@ function getProductsHtml(products) {
   return products
     .map(
       //primesc un json si il transform in string
-      ({ name, category, allergens, measureUnit, quantity, id }) => ` 
+      ({ name, category, allergens, weight, measureUnit, quantity, id }) => ` 
             <tr>
                 <td>${name}</td>
                 <td>${category}</td>
                 <td>${allergens}</td>
+                <td>${weight}</td>
                 <td>${measureUnit}</td>
                 <td>${quantity}</td>
                 <td>
@@ -79,6 +80,7 @@ function readProduct() {
     category: document.getElementById("selectCategory").value,
     allergens: document.getElementById("allergens").value,
     measureUnit: document.getElementById("selectUnit").value,
+    weight: document.getElementById("weight").value,
     quantity: document.getElementById("quantity").value,
   };
 }
@@ -94,6 +96,7 @@ function onSubmit(e) {
       e.target.reset();
     }
   });
+  console.warn("PRODUSELE SUNT: ", product);
 }
 
 function initEvents() {
@@ -130,6 +133,7 @@ function createProductTable(tableId) {
     <th>Name</th>
     <th>Category</th>
     <th>Allergens</th>
+    <th>Weight</th>
     <th>Measure Unit</th>
     <th>Quantity</th>
     </tr>
