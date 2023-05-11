@@ -49,9 +49,9 @@ function displayProducts(products, tableSelector) {
   document.querySelector(tableSelector).innerHTML = getProductsHtml(products);
 }
 
-function getFilteredProducts(products, category) {
+function getFilteredProducts(products, categoryName) {
   const filteredProducts = products.filter((product) => {
-    return product.category === category;
+    return product.category === categoryName;
   });
   return filteredProducts;
 }
