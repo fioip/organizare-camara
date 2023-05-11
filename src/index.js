@@ -58,20 +58,23 @@ function getFilteredProducts(products, category) {
 
 function loadProducts() {
   loadProductsRequest().then((products) => {
-    const fainoaseArray = getFilteredProducts(products, "Fainoase");
-    const conserveArray = getFilteredProducts(products, "Conserve");
-    const dulciuriArray = getFilteredProducts(products, "Dulciuri");
-    const borcaneArray = getFilteredProducts(products, "Borcane");
-    const condimenteArray = getFilteredProducts(products, "Condimente");
-
     allProducts = products;
-    console.warn("aici", products);
-    displayProducts(fainoaseArray, "#fainoaseTable tbody");
-    displayProducts(conserveArray, "#conserveTable tbody");
-    displayProducts(dulciuriArray, "#dulciuriTable tbody");
-    displayProducts(borcaneArray, "#borcaneTable tbody");
-    displayProducts(condimenteArray, "#condimenteTable tbody");
+    displayAllProducts(products);
   });
+}
+
+function displayAllProducts(products) {
+  const fainoaseArray = getFilteredProducts(products, "Fainoase");
+  const conserveArray = getFilteredProducts(products, "Conserve");
+  const dulciuriArray = getFilteredProducts(products, "Dulciuri");
+  const borcaneArray = getFilteredProducts(products, "Borcane");
+  const condimenteArray = getFilteredProducts(products, "Condimente");
+
+  displayProducts(fainoaseArray, "#fainoaseTable tbody");
+  displayProducts(conserveArray, "#conserveTable tbody");
+  displayProducts(dulciuriArray, "#dulciuriTable tbody");
+  displayProducts(borcaneArray, "#borcaneTable tbody");
+  displayProducts(condimenteArray, "#condimenteTable tbody");
 }
 
 function readProduct() {
@@ -92,11 +95,11 @@ function onSubmit(e) {
     if (status.success) {
       product.id = status.id;
       allProducts = [...allProducts, product];
-      displayProducts(allProducts);
+      displayAllProducts(allProducts);
       e.target.reset();
+      closeModal();
     }
   });
-  console.warn("PRODUSELE SUNT: ", product);
 }
 
 function initEvents() {
@@ -114,14 +117,16 @@ function openModal() {
   });
 }
 
-function closeModal() {
+function closeModalOnX() {
   const closeButtons = document.querySelectorAll(".button-close");
   closeButtons.forEach((closeButton) => {
-    closeButton.addEventListener("click", (e) => {
-      const modal = document.querySelector("#modal");
-      modal.classList.remove("open");
-    });
+    closeButton.addEventListener("click", closeModal);
   });
+}
+
+function closeModal() {
+  const modal = document.querySelector("#modal");
+  modal.classList.remove("open");
 }
 
 function createProductTable(tableId) {
@@ -143,7 +148,9 @@ function createProductTable(tableId) {
 }
 
 function initTable(cardName, tableName) {
-  const productCardElement = document.getElementById(cardName);
+  const productCardElement = document.querySelector(
+    `#${cardName} .tableContent`
+  );
   const productTableNode = createProductTable(tableName);
   productCardElement.appendChild(productTableNode);
 }
@@ -160,5 +167,5 @@ initTables();
 loadProducts();
 initEvents();
 openModal();
-closeModal();
+closeModalOnX();
 addProductModalHTML();
