@@ -1,13 +1,26 @@
 # organizare-camara
 
-## TEAM:
+A simple app to help you manage your pantry
+
+## TEAM 😎
 
 - [Iuhasz Fiona](https://github.com/fioip)
 - [Erema Marian](https://github.com/marianerema)
 - [Tataru Andreea](https://github.com/andreeastataru)
 - [Ciont Antonia](https://github.com/antoniaac)
 
-## TO DO:
+## LIVE PREVIEW 👀
+
+- [Camara]()
+
+## STRUCTURE 🖥️
+
+- html / css
+- javascript
+- json
+- node-api
+
+## TO DO ⛏️
 
 - [x] Initialize project to use GIT
 - [x] Initialize folder structure
@@ -17,13 +30,14 @@
 - [x] Create category list html
 - [x] Create product pop-up html
 - [x] Open/close pop-up
-- [ ] Create node.api
-- [ ] Save data from pop up
-- [ ] Populate table with products
-- [ ] Add functionality on table
+- [x] Create node.api
+- [x] Save data from pop up
+- [x] Populate table with products
+- [ ] Add functionality on delete button in table
 - [ ] Create edit product pop-up
+- [ ] Make page responsive
 
-## Project info
+## Project info ✏️
 
 First time use: npm install
 To open the project: npm start
