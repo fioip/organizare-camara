@@ -173,6 +173,7 @@ input:hover {
 
 .card {
   display: flex;
+  align-items: center;
   width: 50%;
   height: 30%;
   border-radius: 20px;
@@ -182,9 +183,9 @@ input:hover {
 }
 
 .card-img {
-  height: 100%;
+  max-height: 500px;
   border-radius: 20px;
-  width: 500px;
+  max-width: 500px;
 }
 
 .card-title {
