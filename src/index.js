@@ -21,6 +21,16 @@ function createProductRequest(product) {
   }).then((r) => r.json());
 }
 
+function deleteProductRequest(id) {
+  return fetch("http://localhost:3000/products-json/delete", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id }),
+  }).then((r) => r.json());
+}
+
 function getProductsHtml(products) {
   return products
     .map(
@@ -105,6 +115,20 @@ function onSubmit(e) {
 function initEvents() {
   const form = document.getElementById("pantryForm");
   form.addEventListener("submit", onSubmit);
+
+  const tableRows = document.querySelectorAll(".displayedProducts");
+  tableRows.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      if (e.target.matches("a.remove-btn")) {
+        const id = e.target.dataset.id;
+        deleteProductRequest(id).then((status) => {
+          if (status.success) {
+            window.location.reload();
+          }
+        });
+      }
+    });
+  });
 }
 
 function openModal() {
@@ -143,7 +167,7 @@ function createProductTable(tableId) {
     <th>Quantity</th>
     </tr>
     </thead>
-    <tbody></tbody>`;
+    <tbody class="displayedProducts"></tbody>`;
   return tableNode;
 }
 
