@@ -1,6 +1,7 @@
 import { addProductModalHTML } from "./form";
 
 let allProducts = [];
+let editId;
 
 function loadProductsRequest() {
   return fetch("http://localhost:3000/products-json", {
@@ -14,6 +15,16 @@ function loadProductsRequest() {
 function createProductRequest(product) {
   return fetch("http://localhost:3000/products-json/create", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(product),
+  }).then((r) => r.json());
+}
+
+function updateProductRequest(product) {
+  return fetch("http://localhost:3000/products-json/update", {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -45,7 +56,7 @@ function getProductsHtml(products) {
                 <td>${quantity}</td>
                 <td>
                   <a data-id="${id}" class="remove-btn">✖</a>
-                  <a data-id="${id}" class="edit-btn">&#9998;</a>
+                  <a data-id="${id}" class="edit-btn";>&#9998;</a>
                 </td>
             </tr>`
     )
@@ -101,15 +112,36 @@ function readProduct() {
 function onSubmit(e) {
   e.preventDefault();
   const product = readProduct();
-  createProductRequest(product).then((status) => {
-    if (status.success) {
-      product.id = status.id;
-      allProducts = [...allProducts, product];
-      displayAllProducts(allProducts);
-      e.target.reset();
-      closeModal();
-    }
-  });
+  if (editId) {
+    product.id = editId;
+    updateProductRequest(product).then((status) => {
+      if (status.success) {
+        window.location.reload();
+      }
+    });
+  } else {
+    createProductRequest(product).then((status) => {
+      if (status.success) {
+        closeModal();
+        window.location.reload();
+        e.target.reset();
+        openModal();
+      }
+    });
+  }
+}
+
+function prepareEdit(id) {
+  const product = allProducts.find((product) => product.id === id);
+  console.log("edit", id, product);
+  editId = id;
+
+  document.getElementById("name").value = product.name;
+  document.getElementById("selectCategory").value = product.category;
+  document.getElementById("allergens").value = product.allergens;
+  document.getElementById("selectUnit").value = product.measureUnit;
+  document.getElementById("weight").value = product.weight;
+  document.getElementById("quantity").value = product.quantity;
 }
 
 function initEvents() {
@@ -126,17 +158,25 @@ function initEvents() {
             window.location.reload();
           }
         });
+      } else if (e.target.matches("a.edit-btn")) {
+        const id = e.target.dataset.id;
+        prepareEdit(id);
+        openModal();
       }
     });
   });
 }
 
 function openModal() {
+  const modal = document.querySelector("#modal");
+  modal.classList.add("open");
+}
+
+function openAddProductModal() {
   const triggers = document.querySelectorAll("[data-modal]");
   triggers.forEach((trigger) => {
     trigger.addEventListener("click", (e) => {
-      const modal = document.querySelector("#modal");
-      modal.classList.add("open");
+      openModal();
     });
   });
 }
@@ -188,8 +228,8 @@ function initTables() {
 }
 
 initTables();
+openAddProductModal();
 loadProducts();
 initEvents();
-openModal();
 closeModalOnX();
 addProductModalHTML();
