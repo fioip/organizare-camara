@@ -11,7 +11,7 @@ A simple app to help you manage your pantry
 
 ## LIVE PREVIEW 👀
 
-- [Camara]()
+- [Camara](https://fioip.github.io/organizare-camara/)
 
 ## STRUCTURE 🖥️
 
