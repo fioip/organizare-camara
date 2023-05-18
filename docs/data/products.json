@@ -1,0 +1,101 @@
+[
+  {
+    "id": "2xykhk1683509301861",
+    "name": "Penne",
+    "category": "Fainoase",
+    "allergens": "Gluten",
+    "weight": "250",
+    "measureUnit": "g",
+    "quantity": "2"
+  },
+  {
+    "id": "u22ndu1683509345761",
+    "name": "Taglitelle",
+    "category": "Fainoase",
+    "allergens": "Gluten",
+    "weight": "500",
+    "measureUnit": "g",
+    "quantity": "3"
+  },
+  {
+    "id": "itm8c1683823857195",
+    "name": "Pate de Porc",
+    "category": "Conserve",
+    "allergens": "Carne de porc",
+    "weight": "120",
+    "measureUnit": "g",
+    "quantity": "1"
+  },
+  {
+    "id": "k3ux6f1683824475050",
+    "name": "spaghete",
+    "category": "Fainoase",
+    "allergens": "Gluten",
+    "weight": "1000",
+    "measureUnit": "g",
+    "quantity": "2"
+  },
+  {
+    "id": "73ozfc1683824490032",
+    "name": "",
+    "category": "",
+    "allergens": "",
+    "weight": "",
+    "measureUnit": "",
+    "quantity": "0"
+  },
+  {
+    "id": "emkla1683824501274",
+    "name": "farfalle",
+    "category": "Fainoase",
+    "allergens": "Gluten",
+    "weight": "500",
+    "measureUnit": "g",
+    "quantity": "3"
+  },
+  {
+    "id": "szr6h1683824517814",
+    "name": "pene",
+    "category": "Fainoase",
+    "allergens": "",
+    "weight": "500",
+    "measureUnit": "g",
+    "quantity": "2"
+  },
+  {
+    "id": "wp0yef1683824978987",
+    "name": "",
+    "category": "",
+    "allergens": "",
+    "weight": "",
+    "measureUnit": "",
+    "quantity": "0"
+  },
+  {
+    "id": "os12x1683825341320",
+    "name": "",
+    "category": "",
+    "allergens": "",
+    "weight": "",
+    "measureUnit": "",
+    "quantity": "0"
+  },
+  {
+    "id": "bpswxg1683825343104",
+    "name": "",
+    "category": "",
+    "allergens": "",
+    "weight": "",
+    "measureUnit": "",
+    "quantity": "0"
+  },
+  {
+    "id": "xf9mfn1683825401690",
+    "name": "penne",
+    "category": "Fainoase",
+    "allergens": "Gluten",
+    "weight": "500",
+    "measureUnit": "g",
+    "quantity": "2"
+  }
+]
