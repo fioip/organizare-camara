@@ -7,9 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clear": "npm run clean && rimraf node_modules",
     "clean": "rimraf docs",
-    "build": "webpack --mode production",
+    "build": "npm run clean && webpack --mode production --progress && npm run copy-resources && git add docs/*",
+    "deploy": "npm run build && git commit -m \"[build] new docs\" && git push",
     "start": "webpack serve --open",
-    "demo": "set PORT=8080 && serve docs"
+    "demo": "set PORT=8080 && serve docs",
+    "copy-resources": "Xcopy /E /C /I \"src/images\" \"docs/images\" && Xcopy /E /C /I \"src/data\" \"docs/data\""
   },
   "keywords": [],
   "author": "",
