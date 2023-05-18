@@ -6,7 +6,7 @@ let editId;
 
 const API = {
   CREATE: {
-    URL: "http://localhost:3000/teams/create",
+    URL: "http://localhost:3000/products-json/create",
     METHOD: "POST",
   },
   READ: {
@@ -14,11 +14,11 @@ const API = {
     METHOD: "GET",
   },
   UPDATE: {
-    URL: "http://localhost:3000/teams/update",
+    URL: "http://localhost:3000/products-json/update",
     METHOD: "PUT",
   },
   DELETE: {
-    URL: "http://localhost:3000/teams/delete",
+    URL: "http://localhost:3000/products-json/delete",
     METHOD: "DELETE",
   },
 };
