@@ -1,80 +1,14 @@
 import "./style.css";
 import { addProductModalHTML } from "./form";
+import {
+  createProductRequest,
+  deleteProductRequest,
+  updateProductRequest,
+  loadProductsRequest,
+} from "./requests";
 
 let allProducts = [];
 let editId;
-
-const API = {
-  CREATE: {
-    URL: "http://localhost:3000/products-json/create",
-    METHOD: "POST",
-  },
-  READ: {
-    URL: "http://localhost:3000/products-json",
-    METHOD: "GET",
-  },
-  UPDATE: {
-    URL: "http://localhost:3000/products-json/update",
-    METHOD: "PUT",
-  },
-  DELETE: {
-    URL: "http://localhost:3000/products-json/delete",
-    METHOD: "DELETE",
-  },
-};
-
-// for demo purposes...
-const isDemo = location.host === "fioip.github.io";
-const inlineChanges = isDemo;
-if (isDemo) {
-  API.READ.URL = "data/products.json";
-  API.DELETE.URL = "data/delete.json";
-  API.CREATE.URL = "data/create.json";
-  API.UPDATE.URL = "data/update.json";
-
-  API.DELETE.METHOD = "GET";
-  API.CREATE.METHOD = "GET";
-  API.UPDATE.METHOD = "GET";
-}
-
-function loadProductsRequest() {
-  return fetch(API.READ.URL, {
-    method: API.READ.METHOD,
-    headers: {
-      "Content-type": "application/json",
-    },
-  }).then((r) => r.json());
-}
-
-function createProductRequest(product) {
-  return fetch("http://localhost:3000/products-json/create", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(product),
-  }).then((r) => r.json());
-}
-
-function updateProductRequest(product) {
-  return fetch("http://localhost:3000/products-json/update", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(product),
-  }).then((r) => r.json());
-}
-
-function deleteProductRequest(id) {
-  return fetch("http://localhost:3000/products-json/delete", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ id }),
-  }).then((r) => r.json());
-}
 
 function getProductsHtml(products) {
   return products
