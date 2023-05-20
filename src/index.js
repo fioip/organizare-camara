@@ -6,6 +6,12 @@ import {
   updateProductRequest,
   loadProductsRequest,
 } from "./requests";
+import {
+  openModal,
+  openAddProductModal,
+  closeModal,
+  closeModalOnX,
+} from "./modal-actions";
 
 let allProducts = [];
 let editId;
@@ -38,6 +44,16 @@ function displayProducts(products, tableSelector) {
   document.querySelector(tableSelector).innerHTML = getProductsHtml(products);
 }
 
+function readProduct() {
+  return {
+    name: document.getElementById("name").value,
+    category: document.getElementById("selectCategory").value,
+    allergens: document.getElementById("allergens").value,
+    measureUnit: document.getElementById("selectUnit").value,
+    weight: document.getElementById("weight").value,
+    quantity: document.getElementById("quantity").value,
+  };
+}
 function getFilteredProducts(products, categoryName) {
   const filteredProducts = products.filter((product) => {
     return product.category === categoryName;
@@ -66,15 +82,41 @@ function displayAllProducts(products) {
   displayProducts(condimenteArray, "#condimenteTable tbody");
 }
 
-function readProduct() {
-  return {
-    name: document.getElementById("name").value,
-    category: document.getElementById("selectCategory").value,
-    allergens: document.getElementById("allergens").value,
-    measureUnit: document.getElementById("selectUnit").value,
-    weight: document.getElementById("weight").value,
-    quantity: document.getElementById("quantity").value,
-  };
+function createProductTable(tableId) {
+  const tableNode = document.createElement("table");
+  tableNode.id = tableId;
+  console.warn("table id", tableNode.id);
+  tableNode.innerHTML = `
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Allergens</th>
+    <th>Weight</th>
+    <th>Measure Unit</th>
+    <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody class="displayedProducts"></tbody>
+    <button data-id="${tableId}" class="load-button"> Load more </button>
+    `;
+  return tableNode;
+}
+
+function initTable(cardName, tableId) {
+  const productCardElement = document.querySelector(
+    `#${cardName} .tableContent`
+  );
+  const productTableNode = createProductTable(tableId);
+  productCardElement.appendChild(productTableNode);
+}
+
+function initTables() {
+  initTable("card-fainoase", "fainoaseTable");
+  initTable("card-conserve", "conserveTable");
+  initTable("card-dulciuri", "dulciuriTable");
+  initTable("card-borcane", "borcaneTable");
+  initTable("card-condimente", "condimenteTable");
 }
 
 function onSubmit(e) {
@@ -133,66 +175,6 @@ function initEvents() {
       }
     });
   });
-}
-
-function openModal() {
-  const modal = document.querySelector("#modal");
-  modal.classList.add("open");
-}
-
-function openAddProductModal() {
-  const triggers = document.querySelectorAll("[data-modal]");
-  triggers.forEach((trigger) => {
-    trigger.addEventListener("click", (e) => {
-      openModal();
-    });
-  });
-}
-
-function closeModalOnX() {
-  const closeButtons = document.querySelectorAll(".button-close");
-  closeButtons.forEach((closeButton) => {
-    closeButton.addEventListener("click", closeModal);
-  });
-}
-
-function closeModal() {
-  const modal = document.querySelector("#modal");
-  modal.classList.remove("open");
-}
-
-function createProductTable(tableId) {
-  const tableNode = document.createElement("table");
-  tableNode.id = tableId;
-  tableNode.innerHTML = `
-    <thead>
-    <tr>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Allergens</th>
-    <th>Weight</th>
-    <th>Measure Unit</th>
-    <th>Quantity</th>
-    </tr>
-    </thead>
-    <tbody class="displayedProducts"></tbody>`;
-  return tableNode;
-}
-
-function initTable(cardName, tableName) {
-  const productCardElement = document.querySelector(
-    `#${cardName} .tableContent`
-  );
-  const productTableNode = createProductTable(tableName);
-  productCardElement.appendChild(productTableNode);
-}
-
-function initTables() {
-  initTable("card-fainoase", "fainoaseTable");
-  initTable("card-conserve", "conserveTable");
-  initTable("card-dulciuri", "dulciuriTable");
-  initTable("card-borcane", "borcaneTable");
-  initTable("card-condimente", "condimenteTable");
 }
 
 initTables();

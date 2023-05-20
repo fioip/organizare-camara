@@ -31,6 +31,15 @@ const API = {
   },
 };
 
+export function loadProductsRequest() {
+  return fetch(API.READ.URL, {
+    method: API.READ.METHOD,
+    headers: {
+      "Content-type": "application/json",
+    },
+  }).then((r) => r.json());
+}
+
 export function createProductRequest(product) {
   return fetch(API.CREATE.URL, {
     method: API.CREATE.METHOD,
@@ -58,14 +67,5 @@ export function deleteProductRequest(id) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ id }),
-  }).then((r) => r.json());
-}
-
-export function loadProductsRequest() {
-  return fetch(API.READ.URL, {
-    method: API.READ.METHOD,
-    headers: {
-      "Content-type": "application/json",
-    },
   }).then((r) => r.json());
 }
