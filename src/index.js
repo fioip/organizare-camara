@@ -194,6 +194,12 @@ function loadMoreProducts(globalTableId) {
       row.style.display = "none";
     }
   });
+  loadButton.addEventListener("click", () => {
+    Array.from(tbodyRows).forEach((row) => {
+      console.warn("aiiiici", row.rowIndex, row.innerHTML);
+      row.style.display = "table-row";
+    });
+  });
 }
 
 initTables();
