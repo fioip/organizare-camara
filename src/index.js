@@ -15,6 +15,7 @@ import {
 
 let allProducts = [];
 let editId;
+let globalTableId;
 
 function getProductsHtml(products) {
   return products
@@ -44,16 +45,6 @@ function displayProducts(products, tableSelector) {
   document.querySelector(tableSelector).innerHTML = getProductsHtml(products);
 }
 
-function readProduct() {
-  return {
-    name: document.getElementById("name").value,
-    category: document.getElementById("selectCategory").value,
-    allergens: document.getElementById("allergens").value,
-    measureUnit: document.getElementById("selectUnit").value,
-    weight: document.getElementById("weight").value,
-    quantity: document.getElementById("quantity").value,
-  };
-}
 function getFilteredProducts(products, categoryName) {
   const filteredProducts = products.filter((product) => {
     return product.category === categoryName;
@@ -85,7 +76,6 @@ function displayAllProducts(products) {
 function createProductTable(tableId) {
   const tableNode = document.createElement("table");
   tableNode.id = tableId;
-  console.warn("table id", tableNode.id);
   tableNode.innerHTML = `
     <thead>
     <tr>
@@ -109,7 +99,10 @@ function initTable(cardName, tableId) {
   );
   const productTableNode = createProductTable(tableId);
   productCardElement.appendChild(productTableNode);
+  globalTableId = tableId;
 }
+
+console.warn("table id", globalTableId);
 
 function initTables() {
   initTable("card-fainoase", "fainoaseTable");
@@ -117,6 +110,17 @@ function initTables() {
   initTable("card-dulciuri", "dulciuriTable");
   initTable("card-borcane", "borcaneTable");
   initTable("card-condimente", "condimenteTable");
+}
+
+function readProduct() {
+  return {
+    name: document.getElementById("name").value,
+    category: document.getElementById("selectCategory").value,
+    allergens: document.getElementById("allergens").value,
+    measureUnit: document.getElementById("selectUnit").value,
+    weight: document.getElementById("weight").value,
+    quantity: document.getElementById("quantity").value,
+  };
 }
 
 function onSubmit(e) {
@@ -177,9 +181,26 @@ function initEvents() {
   });
 }
 
+function loadMoreProducts(globalTableId) {
+  //console.warn("aici table id", globalTableId);
+  const loadButton = document.querySelector(`#fainoaseTable .load-button`);
+  const table = document.querySelector("#fainoaseTable tbody");
+  const tbodyRows = table.rows;
+  //console.warn("total", table, tbodyRowCount);
+  console.warn("total", tbodyRows);
+  Array.from(tbodyRows).forEach((row) => {
+    console.warn("aiiiici", row.rowIndex, row.innerHTML);
+    if (row.rowIndex > 3) {
+      row.style.display = "none";
+    }
+  });
+}
+
 initTables();
 openAddProductModal();
 loadProducts();
 initEvents();
 closeModalOnX();
 addProductModalHTML();
+
+loadMoreProducts();
