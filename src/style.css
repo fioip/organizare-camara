@@ -235,3 +235,7 @@ table tbody tr:nth-child(even) {
   background-color: white;
   cursor: pointer;
 }
+
+.load-button {
+  display: none;
+}

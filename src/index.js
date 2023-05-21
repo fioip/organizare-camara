@@ -42,7 +42,17 @@ let oldDisplayproducts;
 
 function displayProducts(products, tableSelector) {
   oldDisplayproducts = products;
-  document.querySelector(tableSelector).innerHTML = getProductsHtml(products);
+  let productsToShow = products.slice(0, 3);
+  const loadButton = document.querySelector(".load-button");
+  document.querySelector(tableSelector).innerHTML =
+    getProductsHtml(productsToShow);
+  if (productsToShow.length < products.length) {
+    loadButton.style.display = "block";
+  }
+  loadButton.addEventListener("click", () => {
+    document.querySelector(tableSelector).innerHTML = getProductsHtml(products);
+    loadButton.style.display = "none";
+  });
 }
 
 function getFilteredProducts(products, categoryName) {
@@ -88,7 +98,7 @@ function createProductTable(tableId) {
     </tr>
     </thead>
     <tbody class="displayedProducts"></tbody>
-    <button data-id="${tableId}" class="load-button"> Load more </button>
+    <button data-id="${tableId}" class="load-button"> Arata mai mut </button>
     `;
   return tableNode;
 }
@@ -181,32 +191,9 @@ function initEvents() {
   });
 }
 
-function loadMoreProducts(globalTableId) {
-  //console.warn("aici table id", globalTableId);
-  const loadButton = document.querySelector(`#fainoaseTable .load-button`);
-  const table = document.querySelector("#fainoaseTable tbody");
-  const tbodyRows = table.rows;
-  //console.warn("total", table, tbodyRowCount);
-  console.warn("total", tbodyRows);
-  Array.from(tbodyRows).forEach((row) => {
-    console.warn("aiiiici", row.rowIndex, row.innerHTML);
-    if (row.rowIndex > 3) {
-      row.style.display = "none";
-    }
-  });
-  loadButton.addEventListener("click", () => {
-    Array.from(tbodyRows).forEach((row) => {
-      console.warn("aiiiici", row.rowIndex, row.innerHTML);
-      row.style.display = "table-row";
-    });
-  });
-}
-
 initTables();
 openAddProductModal();
 loadProducts();
 initEvents();
 closeModalOnX();
 addProductModalHTML();
-
-loadMoreProducts();
