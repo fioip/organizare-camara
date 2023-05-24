@@ -50,8 +50,16 @@ function displayProducts(products, tableSelector) {
     loadButton.style.display = "block";
   }
   loadButton.addEventListener("click", () => {
-    document.querySelector(tableSelector).innerHTML = getProductsHtml(products);
-    loadButton.style.display = "none";
+    if (loadButton.innerText.trim() == "Arata mai mult") {
+      document.querySelector(tableSelector).innerHTML =
+        getProductsHtml(products);
+      loadButton.innerHTML = "Arata mai putin";
+      console.warn("mai mult");
+    } else {
+      document.querySelector(tableSelector).innerHTML =
+        getProductsHtml(productsToShow);
+      loadButton.innerHTML = "Arata mai mult";
+    }
   });
 }
 
@@ -98,7 +106,7 @@ function createProductTable(tableId) {
     </tr>
     </thead>
     <tbody class="displayedProducts"></tbody>
-    <button data-id="${tableId}" class="load-button"> Arata mai mut </button>
+    <button data-id="${tableId}" class="load-button"> Arata mai mult </button>
     `;
   return tableNode;
 }
