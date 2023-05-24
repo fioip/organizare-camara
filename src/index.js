@@ -54,7 +54,6 @@ function displayProducts(products, tableSelector) {
       document.querySelector(tableSelector).innerHTML =
         getProductsHtml(products);
       loadButton.innerHTML = "Arata mai putin";
-      console.warn("mai mult");
     } else {
       document.querySelector(tableSelector).innerHTML =
         getProductsHtml(productsToShow);
@@ -103,6 +102,7 @@ function createProductTable(tableId) {
     <th>Weight</th>
     <th>Measure Unit</th>
     <th>Quantity</th>
+    <th></th>
     </tr>
     </thead>
     <tbody class="displayedProducts"></tbody>
