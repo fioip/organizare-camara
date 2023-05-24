@@ -4,9 +4,26 @@
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-body {
+.header {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  padding: 6px 24px;
+  background-color: #153147;
+}
+
+.header img {
+  max-height: 50px;
+}
+
+.main {
+  padding: 100px 0;
+  margin: 0 auto;
   max-width: 1400px;
-  margin: 40px auto;
+}
+
+body {
   padding: 0 24px;
   background: #f9f8f7;
 }
@@ -44,6 +61,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 /* Modal */
