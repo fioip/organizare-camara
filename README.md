@@ -20,22 +20,27 @@ A simple app to help you manage your pantry
 - json
 - node-api
 
-## TO DO ⛏️
+# Features & Usage 🔥
 
-- [x] Initialize project to use GIT
-- [x] Initialize folder structure
-- [x] Initialize project to use prettier
-- [x] Initialize project to use NPM
-- [x] Initialize project to use webpack
-- [x] Create category list html
-- [x] Create product pop-up html
-- [x] Open/close pop-up
-- [x] Create node.api
-- [x] Save data from pop up
-- [x] Populate table with products
-- [ ] Add functionality on delete button in table
-- [ ] Create edit product pop-up
-- [ ] Make page responsive
+- [x] Products list filtered by category
+- [x] Add new products using a pop up
+- [x] Edit products using a pop up
+- [x] Delete unwanted products
+
+## Developers Features & Usage 👩‍💻👨‍💻
+
+- [x] Project uses GIT
+- [x] Good folder structure
+- [x] Project uses prettier
+- [x] Project uses NPM
+- [x] Project to uses webpack
+- [x] Data actions are based on our API
+
+## Developers TODOs (items to improve) ⛏️
+
+- [] Option to add new categories
+- [] Option to view products in a separate page
+- [] Possibility to add a grocery list and to add the products that have been bought in the pantry list automatically after you click a checkbox
 
 ## Project info ✏️
 
