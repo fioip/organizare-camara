@@ -18,13 +18,12 @@
 }
 
 .main {
-  padding: 100px 0;
+  padding: 100px 24px 40px;
   margin: 0 auto;
   max-width: 1400px;
 }
 
 body {
-  padding: 0 24px;
   background: #f9f8f7;
 }
 
@@ -307,6 +306,29 @@ table tbody tr:nth-child(even) {
   display: none;
   white-space: nowrap;
   margin-top: 20px;
+}
+
+footer {
+  background-color: #153147;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  cursor: pointer;
+  color: #8db5d3;
+}
+
+footer img {
+  max-height: 30px;
 }
 
 @media only screen and (max-width: 1200px) {
