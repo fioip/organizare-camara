@@ -46,13 +46,14 @@ function displayProducts(products, tableSelector) {
   const loadButton = document.querySelector(".load-button");
   document.querySelector(tableSelector).innerHTML =
     getProductsHtml(productsToShow);
-  if (productsToShow.length < products.length) {
+  if (products.length > 3) {
     loadButton.style.display = "block";
   }
   loadButton.addEventListener("click", () => {
     if (loadButton.innerText.trim() == "Arata mai mult") {
       document.querySelector(tableSelector).innerHTML =
         getProductsHtml(products);
+      console.warn(products);
       loadButton.innerHTML = "Arata mai putin";
     } else {
       document.querySelector(tableSelector).innerHTML =
