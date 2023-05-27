@@ -9,6 +9,7 @@ import {
 import {
   openModal,
   openAddProductModal,
+  openEditModal,
   closeModal,
   closeModalOnX,
 } from "./modal-actions";
@@ -194,7 +195,7 @@ function initEvents() {
       } else if (e.target.matches("a.edit-btn")) {
         const id = e.target.dataset.id;
         prepareEdit(id);
-        openModal();
+        openEditModal();
       }
     });
   });

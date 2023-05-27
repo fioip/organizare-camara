@@ -3,6 +3,12 @@ export function openModal() {
   modal.classList.add("open");
 }
 
+export function openEditModal() {
+  openModal();
+  const editHdr = document.getElementById("modalHdr");
+  editHdr.innerHTML = "Editeaza";
+}
+
 export function openAddProductModal() {
   const triggers = document.querySelectorAll("[data-modal]");
   triggers.forEach((trigger) => {
