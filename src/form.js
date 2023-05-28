@@ -1,5 +1,12 @@
 export function addProductModalHTML() {
   const form = document.querySelector("form");
+  const categories = [
+    "Fainoase",
+    "Conserve",
+    "Dulciuri",
+    "Borcane",
+    "Condimente",
+  ];
 
   form.innerHTML = `
   <div class="modal-body">
@@ -12,11 +19,9 @@ export function addProductModalHTML() {
         <label>Categorie</label>
         <select id="selectCategory">
           <option value="" selected disabled hidden>Alege categorie</option>
-          <option>Fainoase</option>
-          <option>Conserve</option>
-          <option>Dulciuri</option>
-          <option>Borcane</option>
-          <option>Condimente</option>
+          ${categories.map((c) => {
+            return `<option>${c}</option>`;
+          })}
         </select>
     </div>
 

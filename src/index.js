@@ -39,26 +39,24 @@ function getProductsHtml(products) {
     .join("");
 }
 
-let oldDisplayproducts;
-
 function displayProducts(products, tableSelector) {
-  oldDisplayproducts = products;
   let productsToShow = products.slice(0, 3);
-  const loadButton = document.querySelector(".load-button");
-  document.querySelector(tableSelector).innerHTML =
-    getProductsHtml(productsToShow);
+  const table = document.querySelector(tableSelector);
+  const loadButton = table
+    .closest(".tableContent")
+    .querySelector(".load-button");
+  table.innerHTML = getProductsHtml(productsToShow);
   if (products.length > 3) {
     loadButton.style.display = "block";
+    console.warn(loadButton);
   }
   loadButton.addEventListener("click", () => {
     if (loadButton.innerText.trim() == "Arata mai mult") {
-      document.querySelector(tableSelector).innerHTML =
-        getProductsHtml(products);
+      table.innerHTML = getProductsHtml(products);
       console.warn(products);
       loadButton.innerHTML = "Arata mai putin";
     } else {
-      document.querySelector(tableSelector).innerHTML =
-        getProductsHtml(productsToShow);
+      table.innerHTML = getProductsHtml(productsToShow);
       loadButton.innerHTML = "Arata mai mult";
     }
   });
@@ -121,8 +119,6 @@ function initTable(cardName, tableId) {
   productCardElement.appendChild(productTableNode);
   globalTableId = tableId;
 }
-
-console.warn("table id", globalTableId);
 
 function initTables() {
   initTable("card-fainoase", "fainoaseTable");
