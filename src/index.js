@@ -106,7 +106,14 @@ function createProductTable(tableId) {
     </tr>
     </thead>
     <tbody class="displayedProducts"></tbody>
-    <button data-id="${tableId}" class="load-button"> Arata mai mult </button>
+    <tfoot>
+      <tr>
+          <td colspan="2">
+            <button data-id="${tableId}" class="load-button"> Arata mai mult </button>
+          </td>
+      </tr>
+    </tfoot>
+   
     `;
   return tableNode;
 }
