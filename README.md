@@ -38,9 +38,9 @@ A simple app to help you manage your pantry
 
 ## Developers TODOs (items to improve) ⛏️
 
-- [] Option to add new categories
-- [] Option to view products in a separate page
-- [] Possibility to add a grocery list and to add the products that have been bought in the pantry list automatically after you click a checkbox
+- [ ] Option to add new categories
+- [ ] Option to view products in a separate page
+- [ ] Possibility to add a grocery list and to add the products that have been bought in the pantry list automatically after you click a checkbox
 
 ## Project info ✏️
 
