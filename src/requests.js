@@ -1,16 +1,6 @@
 // for demo purposes...
 const isDemo = location.host === "fioip.github.io";
-const inlineChanges = isDemo;
-if (isDemo) {
-  API.READ.URL = "data/products.json";
-  API.DELETE.URL = "data/delete.json";
-  API.CREATE.URL = "data/create.json";
-  API.UPDATE.URL = "data/update.json";
-
-  API.DELETE.METHOD = "GET";
-  API.CREATE.METHOD = "GET";
-  API.UPDATE.METHOD = "GET";
-}
+//const inlineChanges = isDemo;
 
 const API = {
   CREATE: {
@@ -30,6 +20,17 @@ const API = {
     METHOD: "DELETE",
   },
 };
+
+if (isDemo) {
+  API.READ.URL = "data/products.json";
+  API.DELETE.URL = "data/delete.json";
+  API.CREATE.URL = "data/create.json";
+  API.UPDATE.URL = "data/update.json";
+
+  API.DELETE.METHOD = "GET";
+  API.CREATE.METHOD = "GET";
+  API.UPDATE.METHOD = "GET";
+}
 
 export function loadProductsRequest() {
   return fetch(API.READ.URL, {
