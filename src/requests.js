@@ -1,6 +1,5 @@
 // for demo purposes...
 const isDemo = location.host === "fioip.github.io";
-//const inlineChanges = isDemo;
 
 const API = {
   CREATE: {
