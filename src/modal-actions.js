@@ -1,3 +1,5 @@
+import { resetFormValues } from "./index";
+
 export function openModal() {
   const modal = document.querySelector("#modal");
   modal.classList.add("open");
@@ -28,4 +30,7 @@ export function closeModalOnX() {
 export function closeModal() {
   const modal = document.querySelector("#modal");
   modal.classList.remove("open");
+  resetFormValues();
+  const editHdr = document.getElementById("modalHdr");
+  editHdr.innerHTML = "Adauga produs";
 }
