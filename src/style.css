@@ -25,7 +25,6 @@ html {
   padding: 100px 24px 40px;
   margin: 0 auto;
   max-width: 1400px;
-  width: 100%;
   flex-grow: 1;
 }
 
@@ -345,6 +344,10 @@ footer img {
 }
 
 @media only screen and (max-width: 1200px) {
+  .main {
+    margin: unset;
+  }
+
   .products-container {
     flex-direction: column;
   }
