@@ -181,6 +181,15 @@ function prepareEdit(id) {
   document.getElementById("quantity").value = product.quantity;
 }
 
+export function resetFormValues() {
+  document.getElementById("name").value = "";
+  document.getElementById("selectCategory").value = "";
+  document.getElementById("allergens").value = "";
+  document.getElementById("selectUnit").value = "";
+  document.getElementById("weight").value = "";
+  document.getElementById("quantity").value = "";
+}
+
 function initEvents() {
   const form = document.getElementById("pantryForm");
   form.addEventListener("submit", onSubmit);
